@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="news"
+            type="com.ritiesh.newsapp.response.Article" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/articleImage"
+                urlToImage="@{news.urlToImage}"
+                android:layout_width="158dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_image_loader"
+                android:contentDescription="@string/source_image"
+                android:scaleType="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
+
+            <ImageView
+                android:id="@+id/iv_source_news"
+                urltonewssource="@{news.urlToImage}"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/bg_image_loader_source"
+                android:contentDescription="@string/source_image"
+                android:scaleType="center"
+                app:layout_constraintStart_toEndOf="@+id/articleImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_news_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="10dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/open_sans_bold"
+                android:maxLines="1"
+                android:text="@{news.source.name}"
+                android:textColor="@color/colorgray"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@+id/iv_source_news"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="CNN" />
+
+
+            <TextView
+                android:id="@+id/tv_articleTitle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginBottom="12dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="@{news.title}"
+                android:textColor="@color/colortexttitle"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tv_articleDateTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/articleImage"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/sample_news_desc" />
+
+            <TextView
+                android:id="@+id/tv_articleDateTime"
+                timeAgoFormat="@{news.publishedAt}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="10dp"
+                android:maxLines="1"
+                android:textColor="@color/colorgray"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/articleImage"
+                app:layout_constraintTop_toBottomOf="@+id/tv_articleTitle"
+                tools:text=" 5 hours ago" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_goto_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_gotonews"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_saved_news"
+                app:layout_constraintStart_toEndOf="@+id/tv_articleDateTime"
+                app:layout_constraintTop_toBottomOf="@+id/tv_articleTitle">
+
+            </androidx.appcompat.widget.AppCompatImageButton>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_saved_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_saved_news"
+                android:layout_marginEnd="@dimen/_25sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_goto_news"
+                app:layout_constraintTop_toBottomOf="@+id/tv_articleTitle">
+
+            </androidx.appcompat.widget.AppCompatImageButton>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/iv_share_news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_baseline_share_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_saved_news"
+                app:layout_constraintTop_toBottomOf="@+id/tv_articleTitle">
+
+            </androidx.appcompat.widget.AppCompatImageButton>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="?android:attr/listDivider"
+            android:translationY="@dimen/_5sdp">
+
+        </View>
+    </LinearLayout>
+
+
+</layout>

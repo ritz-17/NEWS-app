@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_newsFragment">
+
+    <fragment
+        android:id="@+id/nav_newsFragment"
+        android:name="com.ritiesh.newsapp.view.news.NewsFragment"
+        android:label="News"
+        tools:layout="@layout/fragment_news">
+
+        <action
+            android:id="@+id/action_newsFragment_to_searchnewsFragment"
+            app:destination="@id/searchnewsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_in_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_headlinesNewsFragment"
+        android:name="com.ritiesh.newsapp.view.headline.HeadLinesNewsFragment"
+        android:label="Headline"
+        tools:layout="@layout/fragment_headlines_news" />
+    <fragment
+        android:id="@+id/nav_sourcesNewsFragment"
+        android:name="com.ritiesh.newsapp.view.source.SourcesNewsFragment"
+        android:label="Source"
+        tools:layout="@layout/fragment_sources_news" />
+
+    <fragment
+        android:id="@+id/nav_savedNewsFragment"
+        android:name="com.ritiesh.newsapp.view.saved.SavedNewsFragment"
+        android:label="Saved"
+        tools:layout="@layout/fragment_saved_news" />
+
+    <fragment
+        android:id="@+id/searchnewsFragment"
+        android:name="com.ritiesh.newsapp.view.search.SearchNewsFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search_news">
+
+    </fragment>
+</navigation>
